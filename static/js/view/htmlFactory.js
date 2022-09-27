@@ -1,10 +1,12 @@
 export const htmlTemplates = {
     board: 1,
-    card: 2
+    status: 2,
+    card: 3
 }
 
 export const builderFunctions = {
     [htmlTemplates.board]: boardBuilder,
+    [htmlTemplates.status]: statusBuilder,
     [htmlTemplates.card]: cardBuilder
 };
 
@@ -27,10 +29,16 @@ function boardBuilder(board) {
                 <button class="toggle-board-button" data-board-id="${board.id}">Toggle Cards</button>`
 }
 
-function cardBuilder(card, board_id) {
-    return `<div class="card" data-board-id="${board_id}">
+function cardBuilder(card, status_id) {
+    return `<div class="card" data-status-id="${status_id}">
                 <div class="card card_item" data-card-id="${card.id}">${card.title}</div>
                 <div class="card-remove" data-card-id="${card.id}"><i class="fas fa-trash-alt"></i></div>
+            </div>`;
+}
+
+function statusBuilder(status) {
+    return `<div class="status" data-status-id="${status.id}">
+                ${status.title}
             </div>`;
 }
 

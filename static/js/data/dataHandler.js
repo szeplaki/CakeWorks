@@ -4,29 +4,33 @@ export let dataHandler = {
     },
     getBoard: async function (boardId) {
         // the board is retrieved and then the callback function is called with the board
+        return await apiGet(`/api/${boardId}`);
     },
     getStatuses: async function () {
         // the statuses are retrieved and then the callback function is called with the statuses
+        return await apiGet('/api/statuses');
     },
     getStatus: async function (statusId) {
         // the status is retrieved and then the callback function is called with the status
+        return await apiGet(`/api/${statusId}`);
     },
     getCardsByBoardId: async function (boardId) {
-        return await apiGet(`/api/boards/${boardId}/cards/`);
+        return await apiGet(`/api/boards/${boardId}/cards`);
     },
-    getCard: async function (cardId) {
+    getCard: async function (boardId, cardId) {
         // the card is retrieved and then the callback function is called with the card
+        return await apiGet(`/api/boards/${boardId}/${cardId}`);
     },
     createNewBoard: async function (boardTitle) {
         // creates new board, saves it and calls the callback function with its data
     },
     createNewCard: async function (cardTitle, boardId, statusId) {
         // creates new card, saves it and calls the callback function with its data
-        let card = {'title': cardTitle, 'board_id': boardId, 'status_id': statusId}
-        await apiPost("/api/add_card", card)
+        let card = {'title': cardTitle, 'board_id': boardId, 'status_id': statusId};
+        await apiPost("/api/add_card", card);
     },
     deleteCard: async function (id) {
-        await apiGet(`/api/delete_card/${id}`)
+        await apiGet(`/api/delete_card/${id}`);
     }
 };
 

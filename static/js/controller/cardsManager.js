@@ -8,12 +8,12 @@ export let cardsManager = {
         for (let card of cards) {
             const cardBuilder = htmlFactory(htmlTemplates.card);
             const content = cardBuilder(card, boardId);
-            domManager.addChild(`.board[data-board-id="${boardId}"]`, content);
-            domManager.addEventListener(
-                `.card-remove[data-card-id="${card.id}"]`,
-                "click",
-                deleteButtonHandler
-            );
+            domManager.addChild(`.status[data-status-id="${card.status_id}"]`, content);
+            // domManager.addEventListener(
+            //     `.card-remove[data-card-id="${card.id}"]`,
+            //     "click",
+            //     deleteButtonHandler
+            // );
         }
     },
 };

@@ -1,7 +1,7 @@
 import {dataHandler} from "../data/dataHandler.js";
 import {htmlFactory, htmlTemplates} from "../view/htmlFactory.js";
 import {domManager} from "../view/domManager.js";
-import {cardsManager} from "./cardsManager.js";
+import {statusManager} from "./statusManager.js";
 
 export let boardsManager = {
     loadBoards: async function () {
@@ -26,14 +26,7 @@ export let boardsManager = {
 
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;
-    let cards = document.querySelectorAll(`.card[data-board-id="${boardId}"]`)
-    if (cards.length !== 0) {
-        for (let card of cards) {
-            card.remove()
-        }
-    } else {
-        cardsManager.loadCards(boardId);
-    }
+    statusManager.loadStatuses(boardId);
 }
 
 function createCard(clickEvent) {

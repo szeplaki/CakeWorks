@@ -26,7 +26,7 @@ def get_boards():
     return queries.get_boards()
 
 
-@app.route("/api/boards/<int:board_id>/cards/")
+@app.route("/api/boards/<int:board_id>/cards")
 @json_response
 def get_cards_for_board(board_id: int):
     """
@@ -52,6 +52,24 @@ def add_card():
 def delete_card(id):
     queries.delete_card(id)
     return 'card deleted'
+
+
+@app.route('/api/<int:status_id>')
+@json_response
+def get_status_by_id(status_id: int):
+    return queries.get_status(status_id)
+
+
+@app.route('/api/statuses')
+@json_response
+def get_statuses():
+    return queries.get_statuses()
+
+
+@app.route('/api/<int:board_id>')
+@json_response
+def get_board(board_id: int):
+    return queries.get_board(board_id)
 
 
 def main():

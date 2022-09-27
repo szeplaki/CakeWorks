@@ -63,3 +63,33 @@ def delete_card(card_id):
         ;
         """
         , {"id": card_id})
+
+
+def get_board(board_id):
+    board = data_manager.execute_select("""SELECT *
+                   FROM boards
+                   WHERE boards.id = %(board_id)s
+                   ;
+                   """, {"board_id": board_id})
+    return board
+
+
+def get_statuses():
+    statuses = data_manager.execute_select(
+        """
+        SELECT *
+        FROM statuses
+        """)
+    return statuses
+
+
+def get_status(status_id):
+    status = data_manager.execute_select(
+        """
+        SELECT title
+        FROM statuses
+        WHERE statuses.id = %(status_id)s
+        ;
+        """, {"status_id": status_id}
+    )
+    return status
