@@ -22,38 +22,15 @@ export function htmlFactory(template) {
 
 function boardBuilder(board) {
     return `<div class="board-container">
-                <section class="board">
-            <div class="board-header"><span class="board-title" data-board-id=${board.id}>${board.title}</span>
-                <button class="board-add">Add Card</button>
-                <button class="board-toggle" data-board-id="${board.id}"><i class="fas fa-chevron-down"></i></button>
-            </div>
-            <div class="board-columns">
-                <div class="board-column">
-                    <div class="board-column-title">New</div>
-                    <div class="board-column-content">
-                    </div>
-                </div>
-                <div class="board-column">
-                    <div class="board-column-title">In Progress</div>
-                    <div class="board-column-content">
-                    </div>
-                </div>
-                <div class="board-column">
-                    <div class="board-column-title">Testing</div>
-                    <div class="board-column-content">
-                    </div>
-                </div>
-                <div class="board-column">
-                    <div class="board-column-title">Done</div>
-                    <div class="board-column-content">
-                    </div>
-                </div>
-            </div>
-        </section>
-            </div>`;
+                <div class="board" data-board-id=${board.id}>${board.title}</div>
+                <button class="add-card-button" data-board-id=${board.id}>Add Card</button>
+                <button class="toggle-board-button" data-board-id="${board.id}">Toggle Cards</button>`
 }
 
-function cardBuilder(card) {
-    return `<div class="card" data-card-id="${card.id}">${card.title}</div>`;
+function cardBuilder(card, board_id) {
+    return `<div class="card" data-board-id="${board_id}">
+                <div class="card card_item" data-card-id="${card.id}">${card.title}</div>
+                <div class="card-remove" data-card-id="${card.id}"><i class="fas fa-trash-alt"></i></div>
+            </div>`;
 }
 

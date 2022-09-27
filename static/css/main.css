@@ -27,7 +27,7 @@ h1{
 }
 
 button{
-    background: #222;
+    background: deeppink;
     color: #fff;
     border: none;
     font-size: 14px;
@@ -95,7 +95,7 @@ section.board{
 
 .card{
     position: relative;
-    background: #222;
+    background: green;
     color: #fff;
     border-radius: var(--border-radius);
     margin: 4px 0;

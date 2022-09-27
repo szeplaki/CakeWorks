@@ -7,10 +7,10 @@ export let cardsManager = {
         const cards = await dataHandler.getCardsByBoardId(boardId);
         for (let card of cards) {
             const cardBuilder = htmlFactory(htmlTemplates.card);
-            const content = cardBuilder(card);
+            const content = cardBuilder(card, boardId);
             domManager.addChild(`.board[data-board-id="${boardId}"]`, content);
             domManager.addEventListener(
-                `.card[data-card-id="${card.id}"]`,
+                `.card-remove[data-card-id="${card.id}"]`,
                 "click",
                 deleteButtonHandler
             );
@@ -19,4 +19,6 @@ export let cardsManager = {
 };
 
 function deleteButtonHandler(clickEvent) {
+const id = clickEvent.currentTarget.dataset.cardId;
+    dataHandler.deleteCard(id)
 }

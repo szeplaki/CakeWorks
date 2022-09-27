@@ -15,11 +15,28 @@ export let boardsManager = {
                 "click",
                 showHideButtonHandler
             );
+            domManager.addEventListener(
+                `.add-card-button[data-board-id="${board.id}"]`,
+                "click",
+                createCard
+            );
         }
     },
 };
 
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;
-    cardsManager.loadCards(boardId);
+    let cards = document.querySelectorAll(`.card[data-board-id="${boardId}"]`)
+    if (cards.length !== 0) {
+        for (let card of cards) {
+            card.remove()
+        }
+    } else {
+        cardsManager.loadCards(boardId);
+    }
+}
+
+function createCard(clickEvent) {
+    const boardId = clickEvent.target.dataset.boardId;
+    dataHandler.createNewCard('one more card', boardId, 1)
 }

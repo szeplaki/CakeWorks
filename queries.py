@@ -41,3 +41,25 @@ def get_cards_for_board(board_id):
         , {"board_id": board_id})
 
     return matching_cards
+
+
+def create_card(card_title_inp, board_id_inp, status_id_inp):
+    data_manager.execute_insert(
+        """
+        INSERT INTO cards (board_id, status_id, title, card_order) 
+        VALUES (%(board_id)s, %(status_id)s, %(title)s, 1) 
+        ;
+        """
+        , {"board_id": board_id_inp,
+           'status_id': status_id_inp,
+           'title': card_title_inp})
+
+
+def delete_card(card_id):
+    data_manager.execute_insert(
+        """
+        DELETE FROM cards 
+        WHERE id=%(id)s
+        ;
+        """
+        , {"id": card_id})
