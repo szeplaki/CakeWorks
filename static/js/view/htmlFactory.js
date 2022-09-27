@@ -29,8 +29,8 @@ function boardBuilder(board) {
                 <button class="toggle-board-button" data-board-id="${board.id}">Toggle Cards</button>`
 }
 
-function cardBuilder(card, status_id) {
-    return `<div class="card" data-status-id="${status_id}">
+function cardBuilder(card) {
+    return `<div class="card">
                 <div class="card card_item" data-card-id="${card.id}">${card.title}</div>
                 <div class="card-remove" data-card-id="${card.id}"><i class="fas fa-trash-alt"></i></div>
             </div>`;

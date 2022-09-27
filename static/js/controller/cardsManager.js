@@ -7,13 +7,13 @@ export let cardsManager = {
         const cards = await dataHandler.getCardsByBoardId(boardId);
         for (let card of cards) {
             const cardBuilder = htmlFactory(htmlTemplates.card);
-            const content = cardBuilder(card, boardId);
+            const content = cardBuilder(card);
             domManager.addChild(`.status[data-status-id="${card.status_id}"]`, content);
-            // domManager.addEventListener(
-            //     `.card-remove[data-card-id="${card.id}"]`,
-            //     "click",
-            //     deleteButtonHandler
-            // );
+            domManager.addEventListener(
+                `.card-remove[data-card-id="${card.id}"]`,
+                "click",
+                deleteButtonHandler
+            );
         }
     },
 };

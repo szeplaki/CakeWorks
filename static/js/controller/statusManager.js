@@ -7,7 +7,7 @@ export let statusManager = {
         const statuses = await dataHandler.getStatuses();
         for (let status of statuses) {
             const statusBuilder = htmlFactory(htmlTemplates.status);
-            const content = statusBuilder(status, boardId);
+            const content = statusBuilder(status);
             domManager.addChild(`.board[data-board-id="${boardId}"]`, content);
         }
     }
